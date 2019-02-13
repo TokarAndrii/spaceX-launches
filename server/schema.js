@@ -1,5 +1,5 @@
 const {
-  GraphQLObjectTypes,
+  GraphQLObjectType,
   GraphQLInt,
   GraphQLString,
   GraphQLBoolean,
@@ -10,7 +10,7 @@ const axios = require("axios");
 
 //Types
 
-const LaunchType = new GraphQLObjectTypes({
+const LaunchType = new GraphQLObjectType({
   name: "Launch",
   fields: () => ({
     flight_number: { type: GraphQLInt },
@@ -24,8 +24,8 @@ const LaunchType = new GraphQLObjectTypes({
   })
 });
 
-const RocketType = new GraphQLObjectTypes({
-  name: Rocket,
+const RocketType = new GraphQLObjectType({
+  name: 'Rocket',
   fields: () => ({
     rocket_id: { type: GraphQLString },
     rocket_name: { type: GraphQLString },
@@ -33,7 +33,7 @@ const RocketType = new GraphQLObjectTypes({
   })
 });
 
-const LinksType = new GraphQLObjectTypes({
+const LinksType = new GraphQLObjectType({
   name: "Links",
   fields: () => ({
     mission_patch_small: { type: GraphQLString },
@@ -44,21 +44,50 @@ const LinksType = new GraphQLObjectTypes({
 });
 
 //RootQuery
-const RootQuery = new GraphQLObjectTypes({
+const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
     launches: {
       type: new GraphQLList(LaunchType),
       resolve(parent, args) {
-        axios
+        return axios
           .get("https://api.spacexdata.com/v3/launches")
           .then(resp => resp.data)
-          .catch(error => {
-            console.log(error, " error at GET launches");
-            return error;
-          });
+          .catch(err => console.log(err))
       }
-    }
+    },
+    launch: {
+      type: LaunchType,
+      args: {
+        flight_number: { type: GraphQLInt }
+      },
+      resolve(parent, args) {
+        return axios.get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
+          .then(resp => resp.data)
+          .catch(err => console.log(err))
+      }
+    },
+    rockets: {
+      type: new GraphQLList(RocketType),
+      resolve(parent, args) {
+        return axios
+          .get("https://api.spacexdata.com/v3/rockets")
+          .then(resp => resp.data)
+          .catch(err => console.log(err))
+      }
+    },
+    rocket: {
+      type: RocketType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve(parent, args) {
+        return axios.get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
+          .then(resp => resp.data)
+          .catch(err => console.log(err))
+      }
+    },
+
   }
 });
 
