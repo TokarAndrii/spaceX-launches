@@ -1,0 +1,56 @@
+.launchesListHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.launchListTitle{
+    color: #feda6a;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.launcItemHolder{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-left: 5%;
+    border-bottom: 1px solid white;
+}
+
+.launcItemHolder:hover{
+    background-color: #191919;
+}
+
+.launcItemHolderValueText{
+    margin: 0px 8px;
+    font-weight: bold;   
+}
+
+.launcItemHolderValueImages{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    margin-left: 16px;  
+}
+
+.launcItemHolderRowTitleValuetext{
+    color: #feda6a;
+}
+
+.launcItemHolderRowPart{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 16px;  
+}
+
+.missionPatch{
+    width: 200px;
+    height: 200px;
+}

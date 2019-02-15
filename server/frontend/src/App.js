@@ -8,7 +8,7 @@ import styles from './App.module.css'
 import logo from './images/SpaceXLogo.svg'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3003/graphq'
+  uri: 'http://localhost:3003/graphql'
 })
 
 class App extends Component {
