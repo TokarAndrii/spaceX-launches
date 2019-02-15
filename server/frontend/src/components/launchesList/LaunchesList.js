@@ -38,7 +38,7 @@ export default class LaunchesList extends Component {
                         if (loading) return <p>Loading...</p>;
                         if (error) return <p>Error</p>;
 
-                        return data.launches.map(launch => (
+                        return console.log(data) || data.launches.map(launch => (
                             <div className={styles.launchListItemContent}>
                             <h3 className={styles.launchListItemContentTitle}>{launch.mission_name}</h3>
                             <div key={launch.flight_number} className={styles.launcItemHolder}>
