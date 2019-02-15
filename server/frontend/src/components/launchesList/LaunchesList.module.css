@@ -11,6 +11,18 @@
     text-transform: uppercase;
 }
 
+.launchListItemContent{
+    width: 100%;
+}
+
+.launchListItemContent:hover{
+    background-color: #191919;
+}
+
+.launchListItemContentTitle{
+    color: rgb(240, 50, 230);
+}
+
 .launcItemHolder{
     display: flex;
     flex-direction: row;
@@ -21,9 +33,7 @@
     border-bottom: 1px solid white;
 }
 
-.launcItemHolder:hover{
-    background-color: #191919;
-}
+
 
 .launcItemHolderValueText{
     margin: 0px 8px;

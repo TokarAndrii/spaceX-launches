@@ -39,6 +39,8 @@ export default class LaunchesList extends Component {
                         if (error) return <p>Error</p>;
 
                         return data.launches.map(launch => (
+                            <div className={styles.launchListItemContent}>
+                            <h3 className={styles.launchListItemContentTitle}>{launch.mission_name}</h3>
                             <div key={launch.flight_number} className={styles.launcItemHolder}>
                                 {launch.links.mission_patch_small !== null && (<p className={styles.launcItemHolderRowPart}><img className={styles.missionPatch} src={launch.links.mission_patch_small} alt={launch.rocket.rocket_name}></img></p>)}
                                 <p className={styles.launcItemHolderRowPart}><span className={styles.launcItemHolderRowTitleValuetext}>flight_number:</span> <span className={styles.launcItemHolderValueText}>{launch.flight_number}</span> </p>
@@ -50,6 +52,7 @@ export default class LaunchesList extends Component {
                                 </p>
                                 <p className={styles.launcItemHolderRowPart}><span className={styles.launcItemHolderRowTitleValuetext}>rocket name:</span><span className={styles.launcItemHolderValueText}>{launch.rocket.rocket_name}</span></p>
                                 <p className={styles.launcItemHolderRowPart}><span className={styles.launcItemHolderRowTitleValuetext}>rocket type:</span><span className={styles.launcItemHolderValueText}>{launch.rocket.rocket_type}</span></p>
+                            </div>
                             </div>
                         )
                         );
